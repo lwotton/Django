@@ -1,1 +1,9 @@
-<p>Hello world</p>
+{% if exercise_list %}
+<ul>
+{% for exercise in exercise_list %}
+<li>{{exercise.exercise_name}}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No exercises are available.</p>
+{% endif %}
