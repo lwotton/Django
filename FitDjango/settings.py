@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tracker',
+    'registration',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -80,5 +81,5 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
-
+ACCOUNT_ACTIVATION_DAYS = 2
 STATIC_URL = '/static/'
