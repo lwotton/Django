@@ -1,12 +1,14 @@
 from django.db import models
 import datetime
 from django.utils import timezone
+from django.contrib.auth.models import User, UserManager
 
 class Exercise(models.Model):
 
 	exercise_name = models.CharField(max_length=200)
 	pub_date = models.DateTimeField('date published')
-	
+	weight = models.CharField(max_length=100,default=0)
+	reps = models.IntegerField(default=0)
 	def __str__(self):
 		return self.exercise_name
 	
@@ -17,11 +19,9 @@ class Exercise(models.Model):
 	was_published_recently.boolean = True
 	was_published_recently.short_description = 'Published recently?'
 
-class Reps(models.Model):
+class Profile(User):
 
-	exercise= models.ForeignKey(Exercise)
-	weight = models.CharField(max_length=200)
-	reps = models.IntegerField(default=0)
-	
-	def __str__(self):
-		return self.weight
+	timezone = models.CharField(max_length=50, default='Europe/London')
+	exercise = models.ForeignKey(Exercise);
+
+	objects = UserManager()
