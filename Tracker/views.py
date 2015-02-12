@@ -4,7 +4,7 @@ from forms import UserForm
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
-from tracker.models import Exercise, Profile
+from tracker.models import Exercise, UserProfile
 
 class IndexView(generic.ListView):
 
