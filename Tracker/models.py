@@ -6,8 +6,10 @@ from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
 
-	user = models.ForeignKey(User, unique=True)
-	
+	user = models.OneToOneField(User)
+	age = models.IntegerField(default=0)
+	location = models.CharField(max_length=50, default=0)
+	sex = models.CharField(max_length=10, default=0) 
 	def __str__(self):
 		return str(self.user)
 
@@ -16,7 +18,6 @@ class Exercise(models.Model):
 	person = models.ForeignKey(UserProfile)
 	exercise = models.CharField(max_length=200)
 	reps = models.IntegerField(default=0)
-	date = models.DateTimeField('date done')
 	
 	def __str__(self):
 		return self.exercise
@@ -24,5 +25,11 @@ class Exercise(models.Model):
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
         UserProfile.objects.create(user=instance)
+
+class Activity(models.Model):
+	
+	user = models.ForeignKey(User)
+	exercise = models.ForeignKey(Exercise)
+	date = models.DateTimeField('date done')
 
 post_save.connect(create_user_profile, sender=User)

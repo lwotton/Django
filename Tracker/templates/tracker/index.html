@@ -42,10 +42,10 @@
         <h1>FitDjango Project Page</h1>
         <p class="lead">A starting place.</p>
         {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <p>Welcome, {{ user.get_profile.age }}. Thanks for logging in.</p>
 {% else %}
     <p>Welcome, new user. Please log in.</p>
-    <button type="button" class="btn btn-lg btn-primary">Primary</button>
+
 {% endif %}
       </div>
 
