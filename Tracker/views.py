@@ -12,7 +12,7 @@ class IndexView(generic.ListView):
     context_object_name = 'exercise_list'
 
     def get_queryset(self):
-        return Exercise.objects.all
+        return Exercise.objects.order_by('-pub_date')[:5]
 
 class UserView(generic.ListView):
 	template_name = 'tracker/users.html'

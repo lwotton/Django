@@ -41,6 +41,12 @@
       <div class="starter-template">
         <h1>FitDjango Project Page</h1>
         <p class="lead">A starting place.</p>
+        {% if user.is_authenticated %}
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+    <button type="button" class="btn btn-lg btn-primary">Primary</button>
+{% endif %}
       </div>
 
     </div><!-- /.container -->
@@ -57,14 +63,5 @@
 
 </body></html>
 
-<!-- {% if exercise_list %}
-<ul>
-{% for exercise in exercise_list %}
-<li>{{ exercise.exercise_name }}</li>
-{% endfor %}
-</ul>
-{% else %}
-<p>No exercises are available.</p>
-{% endif %} -->
 
 
