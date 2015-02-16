@@ -2,9 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
+{% load staticfiles %}
 <head>
     <link rel="stylesheet" href="/style.css" />
+     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+          rel="stylesheet" media="screen">
     <title>{% block title %}User test{% endblock %}</title>
 </head>
 
@@ -15,8 +17,7 @@
 
 	{% if user.is_authenticated %}
 	{% trans "Logged in" %}: {{ user.username }} 
-	(<a href="{% url 'registration:auth_logout' %}">{% trans "Log out" %}</a> | 
-	<a href="{% url 'registration:auth_password_change' %}">{% trans "Change password" %}</a>)
+	(<a href="{% url 'registration:auth_logout' %}">{% trans "Log out" %}</a> 
 	{% else %}
 	<a href="{% url 'registration:auth_login' %}">{% trans "Log in" %}</a>
 	{% endif %}
