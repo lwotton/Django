@@ -1,8 +1,8 @@
 
-{% if users_activity %}
+{% if latest_activity %}
 <ul>
-{% for activity in users_activity %}
-<li>{{ activity.user.first_name}}</a></li>
+{% for activity in latest_activity %}
+<li>{{ activity.exercise}}</a></li>
 {% endfor %}
 </ul>
 {% else %}

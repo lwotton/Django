@@ -2,20 +2,33 @@ from django.shortcuts import render
 from django.views import generic
 from forms import UserForm
 from django.contrib.auth import login
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
+from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from tracker.models import Exercise, UserProfile, Activity
 
-class UserActivityView(generic.ListView):
+def activity(request):
+	
+	if request.user.is_authenticated():
+		latest_activity = Activity.objects.filter(user__username=request.user.username)
+	
+	else:
+    		latest_activity = Activity.objects.all()
+    
+    	context = {'latest_activity': latest_activity}
+    	
+    	return render(request, 'tracker/activity.html', context)
 
-	template_name='tracker/activity.html'	
-	context_object_name = "users_activity"
-	model = Activity
+# class UserActivityView(generic.ListView):
 
-	def get_context_data(self,**kwargs):
-		context = super(UserActivityView,self).get_context_data(**kwargs)
-		context['activity_list'] = Activity.objects.all()
-		return context
+# 	template_name='tracker/activity.html'	
+# 	context_object_name = "users_activity"
+# 	model = Activity
+
+# 	def get_context_data(self,**kwargs):
+# 		context = super(UserActivityView,self).get_context_data(**kwargs)
+# 		context['activity_list'] = Activity.objects.filter(user__username='lwotton')
+# 		return context
 
 
 class IndexView(generic.ListView):
