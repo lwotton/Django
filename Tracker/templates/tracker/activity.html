@@ -1,0 +1,10 @@
+
+{% if users_activity %}
+<ul>
+{% for activity in users_activity %}
+<li>{{ activity.user.first_name}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}

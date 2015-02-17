@@ -4,11 +4,13 @@ from django.views.generic import View
 from django.shortcuts import render
 
 from tracker import views
+from tracker.views import UserActivityView
 
 urlpatterns = patterns('',
 	# ex: /polls/
     url(r'^$', views.IndexView.as_view(), name='index'),
     url(r'^users/', views.ListUserView.as_view(),
         name='users',),
+    url(r'^activity/', UserActivityView.as_view(), name='activity'),
 
    )

@@ -3,6 +3,7 @@ from django.contrib import admin
 import registration
 from tracker import views
 from tracker.api import EntryResource
+from django.views.generic import RedirectView
 
 entry_resource = EntryResource()
 

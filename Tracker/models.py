@@ -32,4 +32,7 @@ class Activity(models.Model):
 	exercise = models.ForeignKey(Exercise)
 	date = models.DateTimeField('date done')
 
+	def __str__(self):
+		return str(self.user)
+
 post_save.connect(create_user_profile, sender=User)
