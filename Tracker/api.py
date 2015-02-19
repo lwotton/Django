@@ -22,7 +22,7 @@ class ExerciseResource(ModelResource):
 class ActivityResource(ModelResource):
 
 	user = fields.ForeignKey(UserResource, 'user')
-
+	exercise = fields.ForeignKey(ExerciseResource, 'exercise')
     	class Meta:
         	queryset = Activity.objects.all()
         	resource_name = 'activity'
