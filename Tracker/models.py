@@ -15,10 +15,8 @@ class UserProfile(models.Model):
 
 class Exercise(models.Model):
 
-	person = models.ForeignKey(UserProfile)
 	exercise = models.CharField(max_length=200)
-	reps = models.IntegerField(default=0)
-	
+
 	def __str__(self):
 		return self.exercise
 
@@ -31,7 +29,8 @@ class Activity(models.Model):
 	user = models.ForeignKey(User)
 	exercise = models.ForeignKey(Exercise)
 	date = models.DateTimeField('date done')
-
+	weight = models.IntegerField(max_length=10, default=0)
+	reps = models.IntegerField(max_length=3, default=0)
 	def __str__(self):
 		return str(self.user)
 
