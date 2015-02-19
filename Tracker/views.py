@@ -23,7 +23,7 @@ class Index(View):
     			context = {'latest_activity': latest_activity}
     	
     		return render(request, 'tracker/index.html', context)
-    		
+
 
 class UserView(generic.ListView):
 	template_name = 'tracker/users.html'
