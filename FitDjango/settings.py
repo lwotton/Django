@@ -91,4 +91,6 @@ USE_TZ = True
 ACCOUNT_ACTIVATION_DAYS = 2
 STATIC_URL = '/static/'
 AUTH_PROFILE_MODULE = "tracker.UserProfile"
+SEND_ACTIVATION_EMAIL = False
+
 
