@@ -34,6 +34,7 @@ class UserView(generic.ListView):
 		return Users.objects.all()
 
 class Profile(View):
+	
 	def get(self,request):
 
 			user_details = UserProfile.objects.all()
