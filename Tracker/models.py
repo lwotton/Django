@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 class UserProfile(models.Model):
 
-	user = models.OneToOneField(User)
+	user = models.ForeignKey(User)
 	age = models.IntegerField(default=0)
 	location = models.CharField(max_length=50, default=0)
 	sex = models.CharField(max_length=10, default=0) 

@@ -5,6 +5,7 @@ from forms import UserForm
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect, HttpResponse, HttpRequest
 from django.contrib.auth import authenticate
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from tracker.models import Exercise, UserProfile, Activity
 
@@ -31,6 +32,16 @@ class UserView(generic.ListView):
 
 	def get_queryset(self):
 		return Users.objects.all()
+
+class Profile(View):
+	def get(self,request):
+
+			user_details = UserProfile.objects.all()
+			
+			context = {'user_details':user_details}
+
+			return render(request, 'tracker/profile.html', context)
+
 
 
 class ListUserView(generic.ListView):
